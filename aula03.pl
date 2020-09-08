@@ -24,88 +24,88 @@ permutation(L, [X | P]) :-
 
 
 % Questão 1.1 
-list([]).
-list([_|_]).
+lista([]).
+lista([_|_]).
 
 
 % Questão 1.2
-length_([], 0).
-length_([_ | T], X) :-
-    length_(T, Y),
+tam([], 0).
+tam([_ | T], X) :-
+    tam(T, Y),
     X is Y + 1.
 
 
-% Questão 1.3 - 3.2 - 95 - 671
-evenlength([]).
-evenlength([_, _ | L]) :-
-    evenlength(L).
+% Questão 1.3
+tam_par([]).
+tam_par([_, _ | L]) :-
+    tam_par(L).
 
 oddlength([_]).
 oddlength([_, _ | L]) :-
     oddlength(L).
 
 
-% Questão 1.4 - 3.4 - 95 - 671
-reverse([], []).
-reverse([H | T], X) :-
+% Questão 1.4
+inverte([], []).
+inverte([H | T], X) :-
     reverse(T, TR),
     conc(TR, [H], X).
 
 
-% Questão 1.5 -
-insert(X, L, L1) :-
+% Questão 1.5
+insete(X, L, L1) :-
     add(X, L, L1).
-insert(X, [H | T], [H | L]) :-
-    insert(X, T, L).
+insere(X, [H | T], [H | L]) :-
+    insere(X, T, L).
 
 
-% Questão 1.6 - 3.6 - 95 - 671
-shift([], []).
-shift([H | T], L) :-
+% Questão 1.6
+roda([], []).
+roda([H | T], L) :-
     conc(T, [H], L).
 
 
-% Questão 1.7 - 3.11 - 96 - 672
-flatten2([], []).
-flatten2(X, [X]).
-flatten2([H | T], L) :-
-    flatten2(H, L1),
-    flatten2(T, L2),
+% Questão 1.7
+achata([], []).
+achata(X, [X]).
+achata([H | T], L) :-
+    achata(H, L1),
+    achata(T, L2),
     conc(L1, L2, L).
 
 
-% Questão 1.8 - 3.10 - 96 - 672
-equal_length([], []).
-equal_length([_ | T], [_ | T1]) :-
-    equal_length(T, T1).
+% Questão 1.8
+tamanho_igual([], []).
+tamanho_igual([_ | T], [_ | T1]) :-
+    tamanho_igual(T, T1).
 
 
-% Questão 1.9 - 3.9 - 96 - 672
-dividelist([], [], []).
-dividelist([X], [X], []).
-dividelist([H1, H2 | T], [H1 | T1], [H2 | T2]) :-
-    dividelist(T, T1, T2).
+% Questão 1.9
+divide_lista([], [], []).
+divide_lista([X], [X], []).
+divide_lista([H1, H2 | T], [H1 | T1], [H2 | T2]) :-
+    divide_lista(T, T1, T2).
 
 
 % Questão 2
-sublist2([], _).
-sublist2([H | T1], [H | T2]) :-
-    sublist2(T1, T2).
-sublist2([H | T1], [_ | T2]) :-
-    sublist2([H | T1], T2).
+sublista([], _).
+sublista([H | T1], [H | T2]) :-
+    sublista(T1, T2).
+sublista([H | T1], [_ | T2]) :-
+    sublista([H | T1], T2).
 
 
 % Questão 3
-sublist3(S, L) :-
+sublista2(S, L) :-
     conc(_, S, L2),
     conc(L2, _, L).
 
 
 % Questão 4
-prefix(P, L) :-
+prefixo(P, L) :-
     conc(P, _, L).
 
-suffix(S, L) :-
+sufixo(S, L) :-
     conc(_, S, L).
 
 
@@ -124,61 +124,62 @@ suffix(S, L) :-
 
 
 % Questão 7
-permutation_([], []).
-permutation_([X | L], P) :-
-    permutation_(L, L1),
-    insert(X, L1, P).
+permutacao2([], []).
+permutacao2([X | L], P) :-
+    permutacao2(L, L1),
+    insere(X, L1, P).
 
 
-% Questão 8 - 3.8 - 96 - 671
-subset([], []).
-subset([H | S], [H | SS]) :-
-    subset(S, SS).
-subset([_ | S], SS) :-
-    subset(S, SS).
+% Questão 8
+subconjunto([], []).
+subconjunto([H | S], [H | SS]) :-
+    subconjunto(S, SS).
+subconjunto([_ | S], SS) :-
+    subconjunto(S, SS).
 
 
-% Questão 9.1 - 3.16 - 106 - 673
+% Questão 9.1
 max(X, Y, X) :-
     X >= Y.
 max(X, Y, Y) :-
     Y > X.
 
 
-% Questão 9.2 - 82
-gcd(X, X, X).
-gcd(X, Y, D) :-
+% Questão 9.2
+mdc(X, X, X).
+mdc(X, Y, D) :-
     Y > X,
     Y1 is Y - X,
-    gcd(X, Y1, D).
-gcd(X, Y, D) :-
+    mdc(X, Y1, D).
+mdc(X, Y, D) :-
     X > Y,
     X1 is X - Y,
-    gcd(X1, Y, D).
+    mdc(X1, Y, D).
 
 
-% Questão 9.3 - 3.17 - 107 - 673
-maxlist([X], X).
-maxlist([H | T], H) :-
-    maxlist(T, X),
+% Questão 9.3
+max_lista([X], X).
+max_lista([H | T], H) :-
+    max_lista(T, X),
     H > X.
-maxlist([H | T], X) :-
-    maxlist(T, X),
+max_lista([H | T], X) :-
+    max_lista(T, X),
     H =< X.
 
 
-% Questão 9.4 - 3.18 - 107 - 673
-sumlist_([], 0).
-sumlist_([H | T], S) :-
+% Questão 9.4
+soma_da_lista([], 0).
+soma_da_lista([H | T], S) :-
     S = SS + H,
-    sumlist_(T, SS).
+    soma_da_lista(T, SS).
 
 
-% questão 9.5 - 3.20 - 107 - 673
-subsum([], 0, _).
-subsum(S, X, SS) :-
-    subset(S, SS),
-    sumlist(SS, X).
+% Questão 9.5
+subsoma([], 0, _).
+subsoma(S, X, SS) :-
+    subconjunto(S, SS),
+    soma_da_lista(SS, X).
 
+% Questão 9.6
 
 % Questão 10
