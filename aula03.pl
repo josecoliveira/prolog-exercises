@@ -40,8 +40,8 @@ tam_par([]).
 tam_par([_, _ | L]) :-
     tam_par(L).
 
-oddlength([_]).
-oddlength([_, _ | L]) :-
+tam_impar([_]).
+tam_impar([_, _ | L]) :-
     oddlength(L).
 
 
