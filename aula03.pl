@@ -42,7 +42,7 @@ tam_par([_, _ | L]) :-
 
 tam_impar([_]).
 tam_impar([_, _ | L]) :-
-    oddlength(L).
+    tam_impar(L).
 
 
 % Questão 1.4
