@@ -11,14 +11,30 @@
 
 % Questão 2
 
-todas_ocorrencias(_, [], _, []) :- !.
-todas_ocorrencias(Elemento, [Elemento | Lista], Posicao, NovaListaOcorrencias) :-
-    NovaPosicao is Posicao + 1,
-    todas_ocorrencias(Elemento,  Lista, NovaPosicao, ListaOcorrencias),
-    append(ListaOcorrencias, [Posicao], NovaListaOcorrencias).
-todas_ocorrencias(Elemento, [_ | Lista], Posicao, ListaOcorrencias) :-
-    NovaPosicao is Posicao + 1,
-    todas_ocorrencias(Elemento, Lista, NovaPosicao, ListaOcorrencias). 
+todas_ocorrencias(_, [], []) :- !.
+todas_ocorrencias(Elemento, [Elemento | Lista], [Elemento | ListaOcorrencias]) :-
+    todas_ocorrencias(Elemento, Lista, ListaOcorrencias), !.
+todas_ocorrencias(Elemento, [_ | Lista], ListaOcorrencias) :-
+    todas_ocorrencias(Elemento, Lista, ListaOcorrencias).
 
 
+% Questão 3
 
+frequencia(_, [], 0) :- !.
+frequencia(Elemento, [Primeiro | Lista], NovaFrequencia) :-
+    Elemento = Primeiro,
+    frequencia(Elemento, Lista, Frequencia),
+    NovaFrequencia is Frequencia + 1, !.
+frequencia(Elemento, [Primeiro | Lista], Frequencia) :-
+    Elemento \= Primeiro,
+    frequencia(Elemento, Lista, Frequencia).
+
+% Questão 4
+
+nao_ocorre(_, [], []) :- !.
+nao_ocorre(Elemento, [Primeiro | Lista], [Primeiro | ListaNaoOcorrencias]) :-
+    Elemento \== Primeiro, !,
+    nao_ocorre(Elemento, Lista, ListaNaoOcorrencias).
+nao_ocorre(Elemento, [Primeiro | Lista], ListaNaoOcorrencias) :-
+    Elemento == Primeiro,
+    nao_ocorre(Elemento, Lista, ListaNaoOcorrencias).

@@ -39,9 +39,9 @@ Prazo: 3 de outubro
 Prazo: 4 de outubro
 
 - [ ] 4.1 - Knight's Path **(trying)**
-- [ ] 4.2 - `todas_ocorrencias\3` **(trying)**
-- [ ] 4.3 - `frequencia\3`
-- [ ] 4.4 - `nao_ocorre\3`
+- [x] 4.2 - `todas_ocorrencias\3`
+- [x] 4.3 - `frequencia\3`
+- [x] 4.4 - `nao_ocorre\3`
 - [ ] 4.5 - `freq_nao_ocorre\3`
 - [ ] 4.6 - `alfametico\1`
 
@@ -155,7 +155,7 @@ Prazo: 4 de outubro
 | Aula | Completo |
 |:-:|:-:|
 | 1 | 83% |
-| 2 | 0% |
+| 2 | 50% |
 | 3 | 0% |
 | 4 | 0% |
 | 6 | 0% |
