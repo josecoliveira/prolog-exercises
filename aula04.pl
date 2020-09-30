@@ -1,14 +1,5 @@
 % Questão 1
 
-% valid_position([X, Y], D) :-
-%     X >= 0,
-%     Y >= 0,
-%     X < D,
-%     Y < D.
-
-% jump([X1, Y2]), D, [X1 + 1, Y1 + 2]) :-
-%     valid_position
-
 % Questão 2
 
 todas_ocorrencias(_, [], []) :- !.
@@ -53,3 +44,83 @@ freq_nao_ocorre(Elemento, [Primeiro | Lista], Frequencia) :-
 
 
 % Questão 6
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Algoritmo sem motificações
+% levou 215 segundos para rodar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% alfametico([S,E,I,T,V,N]):-
+%     unifica([0,1,2,3,4,5,6,7,8,9],[S,E,I,T,V,N]),
+%     V \= 0,
+%     1000*S + 100*E + 10*I + S +
+%     1000*S + 100*E + 10*T + E +
+%     1000*S + 100*E + 10*T + E =:=
+%     10000*V + 1000*I + 100*N + 10*T + E.
+
+% unifica(_,[]).
+% unifica(Num,[N|Vars]):-
+%     del(N,Num,NumSemN),
+%     unifica(NumSemN,Vars).
+
+% del(X,[X|Xs],Xs).
+% del(Xs,[Y|Ys],[Y|Zs]):-
+%     del(Xs,Ys,Zs).
+
+% roda([S,E,I,S],[S,E,T,E],[S,E,T,E],[V,I,N,T,E]):-
+%     alfametico([S,E,I,T,V,N]).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Algoritmo unficando V primeiro
+% levou 37 milisegundos para rodar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% alfametico([S,E,I,T,V,N]):-
+%     unifica([0,1,2,3,4,5,6,7,8,9],[V,S,E,I,T,N]),
+%     V \= 0,
+%     1000*S + 100*E + 10*I + S +
+%     1000*S + 100*E + 10*T + E +
+%     1000*S + 100*E + 10*T + E =:=
+%     10000*V + 1000*I + 100*N + 10*T + E.
+
+% unifica(_,[]).
+% unifica(Num,[N|Vars]):-
+%     del(N,Num,NumSemN),
+%     unifica(NumSemN,Vars).
+
+% del(X,[X|Xs],Xs).
+% del(Xs,[Y|Ys],[Y|Zs]):-
+%     del(Xs,Ys,Zs).
+
+% roda([S,E,I,S],[S,E,T,E],[S,E,T,E],[V,I,N,T,E]):-
+%     alfametico([S,E,I,T,V,N]).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Algoritmo unficando V primeiro e apenas com 1 ou 2
+% levou 33 milisegundos para rodar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+alfametico([S,E,I,T,V,N]):-
+    unifica([0,1,2,3,4,5,6,7,8,9],[V,S,E,I,T,N]),
+    V \= 0,
+    (V = 1; V = 2),
+    1000*S + 100*E + 10*I + S +
+    1000*S + 100*E + 10*T + E +
+    1000*S + 100*E + 10*T + E =:=
+    10000*V + 1000*I + 100*N + 10*T + E.
+
+unifica(_,[]).
+unifica(Num,[N|Vars]):-
+    del(N,Num,NumSemN),
+    unifica(NumSemN,Vars).
+
+del(X,[X|Xs],Xs).
+del(Xs,[Y|Ys],[Y|Zs]):-
+    del(Xs,Ys,Zs).
+
+roda([S,E,I,S],[S,E,T,E],[S,E,T,E],[V,I,N,T,E]):-
+    alfametico([S,E,I,T,V,N]).
+
+% Com certeza há vantagem, pois irá encontrar a solução primeiro desta forma.

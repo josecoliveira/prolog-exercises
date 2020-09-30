@@ -43,7 +43,7 @@ Prazo: 4 de outubro
 - [x] 4.3 - `frequencia\3`
 - [x] 4.4 - `nao_ocorre\3`
 - [x] 4.5 - `freq_nao_ocorre\3`
-- [ ] 4.6 - `alfametico\1`
+- [x] 4.6 - `alfametico\1`
 
 ### Aula 5
 
@@ -155,7 +155,7 @@ Prazo: 4 de outubro
 | Aula | Completo |
 |:-:|:-:|
 | 1 | 83% |
-| 2 | 67% |
+| 2 | 83% |
 | 3 | 0% |
 | 4 | 0% |
 | 6 | 0% |
@@ -166,4 +166,4 @@ Prazo: 4 de outubro
 | 11 | 0% |
 | 12 | 0% |
 | 13 | 71% |
-| 14 | 0% 
+| 14 | 0% |
