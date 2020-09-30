@@ -38,3 +38,18 @@ nao_ocorre(Elemento, [Primeiro | Lista], [Primeiro | ListaNaoOcorrencias]) :-
 nao_ocorre(Elemento, [Primeiro | Lista], ListaNaoOcorrencias) :-
     Elemento == Primeiro,
     nao_ocorre(Elemento, Lista, ListaNaoOcorrencias).
+
+
+% Questão 5
+
+freq_nao_ocorre(_, [], 0) :- !.
+freq_nao_ocorre(Elemento, [Primeiro | Lista], NovaFrequencia) :-
+    Elemento \= Primeiro, !,
+    freq_nao_ocorre(Elemento, Lista, Frequencia),
+    NovaFrequencia is Frequencia + 1.
+freq_nao_ocorre(Elemento, [Primeiro | Lista], Frequencia) :-
+    Elemento = Primeiro,
+    freq_nao_ocorre(Elemento, Lista, Frequencia).
+
+
+% Questão 6
