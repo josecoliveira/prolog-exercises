@@ -65,3 +65,45 @@ aterrado(Termo) :-
     callable(Termo),
     Termo =.. L,
     forall(member(A, L), aterrado(A)).
+
+
+% Questão 4
+
+% substituir(Termo, Termo, Termo1, Termo1) :- !.
+% substituir(_, Termo, _, Termo) :-
+%     atomic(Termo), !.
+% subsituir(Sub, Termo, Sub1, Termo1) :-
+%     Termo =.. [F | Args],
+%     subst_lista(Sub, Args, Sub1, Args1),
+%     Termo1 =.. [F | Args1].
+
+% % subst_lista(_, [], _, []) :- !.
+% % subst_lista(Sub, [Termo | Termos], Sub1, [Termo1 | Termos1]) :-
+% %     substituir(Sub, Termo, Sub1, Termo1),
+% %     subst_lista(Sub, Termos, Sub1, Termos1).
+
+% subst_lista(_, [], _, []) :- !.
+% subst_lista(Sub, [Termo | Termos], Sub1, [Termo1 | Termos1]) :-
+%     substituir(Sub, Termo, Sub1, Termo1).
+% subst_lista(Sub, [_ | Termos], Sub1, Termos1) :-
+%     subst_lista(Sub, Termos, Sub1, Termos1).
+
+
+% Questão 5
+
+subsume(X, Y) :-
+    atomic(X), !,
+    X = Y.
+subsume(X, Y) :-
+    var(X), !,
+    X = Y.
+subsume(X, Y) :-
+    callable(X), !,
+    X =.. L1,
+    Y =.. L2,
+    subsumeLista(L1, L2).
+
+subsumeLista([], []) :- !.
+subsumeLista([X | L1], [Y | L2]) :-
+    subsume(X, Y),
+    subsumeLista(L1, L2).
