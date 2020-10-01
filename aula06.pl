@@ -54,4 +54,14 @@ simplifica(Expressao, Simplificada) :-
     simplificaLista(ListaExpressao, Simplificada).
     
 
+% Questão 2
 
+
+% Questão 3
+
+aterrado(Termo) :-
+    atom(Termo), !.
+aterrado(Termo) :-
+    callable(Termo),
+    Termo =.. L,
+    forall(member(A, L), aterrado(A)).
