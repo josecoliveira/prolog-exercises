@@ -111,9 +111,6 @@ subsumeLista([X | L1], [Y | L2]) :-
 
 % Questão 6
 
-% 6. Escreva uma meta Prolog que retire todos os fatos produto/3
-% da base de dados gerados por tabuada/0.
-
 tabuadas:-
     L = [0,1,2,3,4,5,6,7,8,9],
     member(X,L),
@@ -126,3 +123,18 @@ tabuadas:-
 
 % Item 6.6.
 % retractall(produto(X, Y, 0)), fail.
+
+
+% Questão 7
+
+
+% Questão 8
+subconjunto([], []).
+subconjunto([H | S], [H | SS]) :-
+    subconjunto(S, SS).
+subconjunto([_ | S], SS) :-
+    subconjunto(S, SS).
+
+subconjuntos(Conj,  Subconjs) :-
+    bagof(X, subconjunto(Conj, X), Subconjs).
+
