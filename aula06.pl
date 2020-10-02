@@ -129,6 +129,7 @@ tabuadas:-
 
 
 % Questão 8
+
 subconjunto([], []).
 subconjunto([H | S], [H | SS]) :-
     subconjunto(S, SS).
@@ -138,3 +139,26 @@ subconjunto([_ | S], SS) :-
 subconjuntos(Conj,  Subconjs) :-
     bagof(X, subconjunto(Conj, X), Subconjs).
 
+
+% Questão 10
+
+imprime_caracteres(_, 0) :- !.
+imprime_caracteres(C, N) :-
+    write(C),
+    NovoN is N - 1,
+    imprime_caracteres(C, NovoN).
+
+imprime_triangulo(I, F) :-
+    I =< F,
+    NumCaracteres is 2 * F - 1,
+    NumAsteriscos is 1 + 2 * (I - 1),
+    NumEspacos is (NumCaracteres - NumAsteriscos) / 2,
+    imprime_caracteres(' ', NumEspacos),
+    imprime_caracteres('*', NumAsteriscos),
+    imprime_caracteres(' ', NumEspacos),
+    (I \= F -> nl),
+    I2 is I + 1,
+    imprime_triangulo(I2, F).
+
+triangulo(N) :-
+    imprime_triangulo(1, N).
