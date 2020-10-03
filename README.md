@@ -79,7 +79,7 @@ Prazo: 4 de outubro
 
 Prazo: 4 de outubro
 
-- [ ] 7.1
+- [x] 7.1
 - [ ] 7.2
 - [ ] 7.3
 - [ ] 7.4
