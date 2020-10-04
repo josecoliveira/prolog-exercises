@@ -57,3 +57,24 @@ quicksort2(L, O) :-
 %     conc_dl(L1, L2, L3).
 
 adiciona_ao_fim(A - [C | X], C, A - X).
+
+
+% Questão 3
+
+
+% Questão 4
+
+maxdl([], Max, Max).
+maxdl([Primeiro | Lista], Max, MaxF) :-
+    (Primeiro > Max ->
+        NovoMax = Primeiro
+    ;
+        NovoMax = Max),
+    maxdl(Lista, NovoMax, MaxF).
+
+
+% Questão 5
+
+
+
+

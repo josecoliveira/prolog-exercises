@@ -48,7 +48,7 @@ tam_impar([_, _ | L]) :-
 % Questão 1.4
 inverte([], []).
 inverte([H | T], X) :-
-    reverse(T, TR),
+    inverte(T, TR),
     conc(TR, [H], X).
 
 
