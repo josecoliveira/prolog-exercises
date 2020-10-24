@@ -7,7 +7,6 @@ set_element_at_nth0([First | List1], CurrentIndex, Index, Elem, List2) :-
     NextIndex is CurrentIndex + 1,
     set_element_at_nth0(List1, NextIndex, Index, Elem, List3),
     List2 = [First | List3].
-
 set_element_at_nth0(List1, Index, Elem, List2) :-
     set_element_at_nth0(List1, 0, Index, Elem, List2).
 
@@ -136,7 +135,6 @@ best_first1(Nodes, Solution) :-
     goal(Solution).
 best_first1(Nodes, Solution) :-
     predsort(compare_wrong_squares, Nodes, [Node | Remainder]),
-    goal(Solution),
     expand(Node, Children),
     append(Children, Remainder, Nodes1),
     best_first1(Nodes1, Solution).
@@ -152,7 +150,7 @@ best_first2(Nodes, Solution) :-
     goal(Solution).
 best_first2(Nodes, Solution) :-
     predsort(compare_board_manhattan_distance, Nodes, [Node | Remainder]),
-    goal(Solution),
     expand(Node, Children),
     append(Children, Remainder, Nodes1),
     best_first2(Nodes1, Solution).
+
